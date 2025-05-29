@@ -1,0 +1,27 @@
+[
+  {
+    "id": "link-01",
+    "title": "Home",
+    "value": "bookshelf"
+  },
+  {
+    "id": "link-02",
+    "title": "Discover",
+    "value": "discover"
+  },
+  {
+    "id": "link-03",
+    "title": "Your Books",
+    "value": "your-books"
+  },
+  {
+    "id": "link-04",
+    "title": "Profile",
+    "value": "profile"
+  },
+  {
+    "id": "link-05",
+    "title": "Logout",
+    "value": "login"
+  }
+]
