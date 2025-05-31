@@ -5,8 +5,19 @@ import { InnerPagination } from "@components/discover/InnerPagination"
 import { Label } from "@components/ui/label/label"
 import { Layout } from "@layouts/Layout"
 import { Title } from "@components/ui/title/title"
+import { useId } from "react"
+import { usePagination } from "@hooks/usePagination"
+import { useQuery } from "@hooks/useQuery"
 
 export const Discover = () => {
+  const paginationId = useId()
+  const query = useQuery()
+  const { 
+    pageActive, 
+    nextLimit, 
+    previousLimit 
+  } = usePagination(query.get("page"), "discover", 5)
+
   return (
     <Layout>
       <ContentContainer>
@@ -60,7 +71,16 @@ export const Discover = () => {
             />
           ))}
         </section>
-        <InnerPagination path="discover" />
+        <InnerPagination 
+          path="discover"
+          previous={`discover?page=${previousLimit()}`}
+          next={`discover?page=${nextLimit()}`}
+          pagination={Array.from({ length: 5 }, (_, index) => ({ 
+            id: `${paginationId}-${index}`,
+            current: index + 1,
+            isActive: pageActive(index + 1),
+          }))}
+        />
       </ContentContainer>
     </Layout>
   )

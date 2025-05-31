@@ -3,8 +3,19 @@ import { ContentContainer } from "@components/ui/containers/ContentContainer"
 import { Layout } from "@layouts/Layout"
 import { Title } from "@components/ui/title/title"
 import { InnerPagination } from "@components/discover/InnerPagination"
+import { useId } from "react"
+import { useQuery } from "@hooks/useQuery"
+import { usePagination } from "@hooks/usePagination"
 
 export const YourBooks = () => {
+  const paginationId = useId()
+  const query = useQuery()
+  const { 
+    pageActive, 
+    nextLimit, 
+    previousLimit 
+  } = usePagination(query.get("page"), 'your-books', 5)
+
   return (
     <Layout>
       <ContentContainer>
@@ -24,7 +35,16 @@ export const YourBooks = () => {
             />
           ))}
         </section>
-        <InnerPagination path="your-books" />
+        <InnerPagination 
+          path="your-books"
+          previous={`your-books?page=${previousLimit()}`}
+          next={`your-books?page=${nextLimit()}`}
+          pagination={Array.from({ length: 5 }, (_, index) => ({ 
+            id: `${paginationId}-${index}`,
+            current: index + 1,
+            isActive: pageActive(index + 1),
+          }))}
+        />
       </ContentContainer>
     </Layout>
   )

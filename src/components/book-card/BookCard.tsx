@@ -1,17 +1,17 @@
-import type { MouseEventHandler } from 'react'
-import type { BookCardProps } from '@@types/bookCard'
-import { ChevronRight, PlusIcon } from 'lucide-react'
-import { AppLink } from "@components/ui/app-link/AppLink"
-import { Button } from '@components/ui/button/button';
-import { Image } from "@components/ui/image/image"
-import { Title } from "@components/ui/title/title"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger
 } from '@components/ui/tooltip/tooltip'
-import { useLocation } from 'react-router-dom';
+import type { MouseEventHandler } from 'react'
+import type { BookCardProps } from '@@types/bookCard'
+import { ChevronRight, PlusIcon } from 'lucide-react'
+import { AppLink } from "@components/ui/app-link/AppLink"
+import { Button } from '@components/ui/button/button'
+import { Image } from "@components/ui/image/image"
+import { Title } from "@components/ui/title/title"
+import { useLocation } from 'react-router-dom'
 
 const BookTooltip = ({ onClick }: { onClick?: MouseEventHandler<HTMLButtonElement> }) => (
   <TooltipProvider>
