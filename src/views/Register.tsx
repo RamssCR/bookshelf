@@ -9,7 +9,7 @@ import { Image } from '@components/ui/image/image'
 import { Notification } from '@components/notification/Notification'
 import { RegisterForm } from '@components/register/RegisterForm'
 import { SignContainer } from '@components/ui/containers/SignContainer'
-import { TitleContent } from '@components/sign-title-content/TitleContent'
+import { TitleContent } from '@components/signing/TitleContent'
 import { currentYear } from '@utils/currentYear'
 
 export const Register = () => {
