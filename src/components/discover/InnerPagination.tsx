@@ -1,36 +1,48 @@
+import type { PaginationProps } from '@@types/pagination'
 import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
 } from '@components/ui/pagination/pagination'
+import { useId } from 'react'
 
-export const InnerPagination = ({ path }: { path: string }) => {
-    return (
-        <Pagination>
-            <PaginationContent>
-                <PaginationItem>
-                    <PaginationPrevious to={`/${path}`} />
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink to={`/${path}`} isActive>1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink to={`/${path}`}>2</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationLink to={`/${path}`}>3</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationEllipsis />
-                </PaginationItem>
-                <PaginationItem>
-                    <PaginationNext to={`/${path}`} />
-                </PaginationItem>
-            </PaginationContent>
-        </Pagination>
-    )
+type InnerPaginationProps = {
+  path: string
+  previous: string
+  next: string
+  pagination: PaginationProps[]
+}
+
+export const InnerPagination = ({ path, pagination, previous = "", next = "" }: InnerPaginationProps) => {
+  const paginationId = useId()
+
+  return (
+    <Pagination>
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious to={`/${previous}`} />
+        </PaginationItem>
+        {pagination?.map(item => (
+          <PaginationItem key={`${paginationId}-${item.id}`}>
+            <PaginationLink
+              to={`/${path}?page=${item.current}`}
+              isActive={item.isActive}
+            >
+              {item.current}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+        <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem>
+        <PaginationItem>
+          <PaginationNext to={`/${next}`} />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
+  )
 }
