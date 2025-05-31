@@ -3,11 +3,19 @@ import { DarkModeToggler } from "@components/dark-mode-toggler/DarkModeToggler"
 import { Title } from "@components/ui/title/title"
 import { Update } from '@components/notification/Update'
 import { classMerger } from '@utils/classMerger'
-import { useLocation } from 'react-router-dom'
 import links from '@data/internal.links.json'
+import { logout } from '@services/authentication'
+import { useLocation } from 'react-router-dom'
+import { userStore } from '@stores/userStore'
 
 export const Sidebar = () => {
+  const { clearUser } = userStore()
   const { pathname } = useLocation()
+
+  const handleClick = async () => {
+    await logout()
+    clearUser()
+  }
 
   return (
     <aside className="hidden w-full lg:flex flex-col items-start gap-6 px-6 py-5 sticky top-[4.25em] lg:top-[5rem] self-start h-[calc(100dvh-4.25em)] lg:h-[calc(100dvh-5rem)] overflow-y-auto border-r border-r-border">
@@ -30,6 +38,18 @@ export const Sidebar = () => {
             {link.title}
           </AppLink>
         ))}
+        <AppLink
+          to="/login"
+          variant="muted"
+          size="md"
+          className={classMerger(
+            "px-3 transition-all hover:px-3 w-full rounded-md",
+            pathname === '/login' ? "px-3 bg-accent" : ""
+          )}
+          onClick={handleClick}
+        >
+          Logout
+        </AppLink>
         <DarkModeToggler className="mt-2 pl-3" />
       </nav>
       <Update
