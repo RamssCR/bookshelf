@@ -3,7 +3,7 @@ import { User as UserIcon } from 'lucide-react'
 import { AppLink } from "@components/ui/app-link/AppLink"
 import { classMerger } from "@utils/classMerger"
 
-export const User = ({ username, className }: { username: string, className?: string }) => {
+export const User = ({ username, className }: { username?: string, className?: string }) => {
   return (
     <AppLink 
       to="/profile" 
