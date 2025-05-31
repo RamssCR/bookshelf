@@ -2,9 +2,12 @@ import { ComingSoon } from "@components/coming-soon/ComingSoon"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
 import { Title } from "@components/ui/title/title"
 import { Layout } from "@layouts/Layout"
+import { userStore } from "@stores/userStore"
 import { UserIcon } from "lucide-react"
 
 export const Profile = () => {
+  const { user } = userStore()
+
   return (
     <Layout>
       <ContentContainer>
@@ -17,9 +20,9 @@ export const Profile = () => {
             <UserIcon className="fill-primary size-16 md:size-12" />
           </div>
           <article className="flex flex-col items-center gap-1 md:items-start">
-            <Title as="h5" className="text-xl font-medium text-primary">RamssC</Title>
+            <Title as="h5" className="text-xl font-medium text-primary">{user?.username}</Title>
             <p className="text-muted-foreground font-medium text-sm">Bookaholic</p>
-            <p className="-mt-1 text-muted-foreground font-medium text-sm">example@example.com</p>
+            <p className="-mt-1 text-muted-foreground font-medium text-sm">{user?.email}</p>
           </article>
         </section>
         <section className="flex flex-col items-start gap-3 w-full">

@@ -18,10 +18,5 @@
     "id": "link-04",
     "title": "Profile",
     "value": "profile"
-  },
-  {
-    "id": "link-05",
-    "title": "Logout",
-    "value": "login"
   }
 ]
