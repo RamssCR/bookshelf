@@ -28,10 +28,10 @@ const BookTooltip = ({ onClick }: { onClick?: MouseEventHandler<HTMLButtonElemen
 
 export const BookCard = ({
   title,
-  author,
-  image,
+  Author,
+  cover,
   slug,
-  category,
+  Genre
 }: Omit<BookCardProps, 'id'>) => {
   const { pathname } = useLocation()
   const isYourBooks = pathname.includes('/your-books')
@@ -43,15 +43,15 @@ export const BookCard = ({
         className="w-full"
       >
         <Image
-          src={image}
+          src={cover}
           alt={title}
-          className="w-full rounded-xs aspect-[9_16] shadow transition-transform hover:scale-105"
+          className="w-full rounded-xs aspect-[9_16] max-h-[17.9em] md:max-h-[18.6em] shadow transition-transform hover:scale-105"
         />
       </AppLink>
       <section className="w-full flex flex-col items-start">
         <section className="w-full flex items-baseline justify-between lg:items-end">
           <div className="w-full flex flex-col items-start gap-1">
-            <p className="text-xs text-primary font-semibold">{category}</p>
+            <p className="text-xs text-primary font-semibold">{Genre.name}</p>
             <AppLink to={`/books/${slug}`} className="w-full">
               <Title
                 as="h3"
@@ -64,7 +64,7 @@ export const BookCard = ({
           <BookTooltip />
           <Button variant="none" size="none" className="hover:cursor-pointer lg:hidden">Add</Button>
         </section>
-        <p className="text-xs line-clamp-1 font-medium text-muted-foreground transition-colors">{author}</p>
+        <p className="text-xs line-clamp-1 font-medium text-muted-foreground transition-colors">{Author.name}</p>
         {isYourBooks && (
           <AppLink 
             to={`/books/read/${slug}`}

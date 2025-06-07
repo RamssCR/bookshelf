@@ -14,7 +14,11 @@ export const YourBooks = () => {
     pageActive, 
     nextLimit, 
     previousLimit 
-  } = usePagination(query.get("page"), 'your-books', 5)
+  } = usePagination({
+    query: query.get("page"), 
+    path: 'your-books', 
+    limit: 5
+  })
 
   return (
     <Layout>
@@ -27,10 +31,10 @@ export const YourBooks = () => {
           {Array.from({ length: 15 }, (_, index) => (
             <BookCard
               key={index}
-              category="Fiction"
               title="The Great Gatsby"
-              author="F. Scott Fitzgerald"
-              image="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJvb2slMjBjb3ZlZXxlbnwwfHx8fDE2ODQ5NTY1NzA&ixlib=rb-4.0.3&q=80&w=400"
+              Author={{ id: "1", name: "F. Scott Fitzgerald" }}
+              Genre={{ id: "1", name: "Fiction" }}
+              cover="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJvb2slMjBjb3ZlZXxlbnwwfHx8fDE2ODQ5NTY1NzA&ixlib=rb-4.0.3&q=80&w=400"
               slug="the-great-gatsby"
             />
           ))}
