@@ -21,7 +21,6 @@ import { useComboboxFilter } from "@hooks/useComboboxFilter"
 type ComboboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> & {
   items: Item[]
   name: string
-  initialValue?: string | null
 }
 
 export const Combobox = ({ items, name, ...props }: ComboboxProps) => {
@@ -67,7 +66,7 @@ export const Combobox = ({ items, name, ...props }: ComboboxProps) => {
                   <Check
                     className={classMerger(
                       "mr-2 h-4 w-4",
-                      value === item.id ? "opacity-100" : "opacity-0"
+                      value === item.name ? "opacity-100" : "opacity-0"
                     )}
                   />
                   {item.name}
