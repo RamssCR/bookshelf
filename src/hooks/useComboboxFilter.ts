@@ -5,7 +5,7 @@ export const useComboboxFilter = (items: Item[]) => {
   const [open, setOpen] = useState(false)
   const [value, setValue] = useState('')
 
-  const foundItem = items.find(item => item.value.toLocaleLowerCase() === value.toLocaleLowerCase())?.label
+  const foundItem = items.find(item => item.name.toLocaleLowerCase() === value.toLocaleLowerCase())?.name
 
   const handleSelect = (currentValue: string) => {
     setValue(currentValue === value ? '' : currentValue)

@@ -1,7 +1,3 @@
-import type { Item } from "@@types/combobox"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { classMerger } from "@utils/classMerger"
-import { Button } from "@components/ui/button/button"
 import {
   Command,
   CommandEmpty,
@@ -15,8 +11,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@components/ui/popover/popover"
-import { useComboboxFilter } from "@hooks/useComboboxFilter"
+import { Check, ChevronsUpDown } from "lucide-react"
 import type { InputHTMLAttributes } from "react"
+import type { Item } from "@@types/combobox"
+import { classMerger } from "@utils/classMerger"
+import { Button } from "@components/ui/button/button"
+import { useComboboxFilter } from "@hooks/useComboboxFilter"
 
 type ComboboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> & {
   items: Item[]
@@ -59,17 +59,17 @@ export const Combobox = ({ items, name, ...props }: ComboboxProps) => {
             <CommandGroup>
               {items.map((item) => (
                 <CommandItem
-                  key={item.value}
-                  value={item.value}
+                  key={item.name}
+                  value={item.name}
                   onSelect={handleSelect}
                 >
                   <Check
                     className={classMerger(
                       "mr-2 h-4 w-4",
-                      value === item.value ? "opacity-100" : "opacity-0"
+                      value === item.name ? "opacity-100" : "opacity-0"
                     )}
                   />
-                  {item.label}
+                  {item.name}
                 </CommandItem>
               ))}
             </CommandGroup>
