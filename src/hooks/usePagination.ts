@@ -1,7 +1,13 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-export const usePagination = (query: string | null, path: string, limit: number) => {
+type UsePaginationProps = {
+  query: string | null
+  path: string
+  limit: number
+}
+
+export const usePagination = ({ query, path, limit }: UsePaginationProps) => {
   const navigateTo = useNavigate()
 
   useEffect(() => {
