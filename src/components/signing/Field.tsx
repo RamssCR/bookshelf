@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes } from 'react'
-import { Input } from '@components/ui/input/input'
-import { Label } from '@components/ui/label/label'
+import { Input } from '@components/ui/input'
+import { Label } from '@components/ui/label'
 import type { UseFormRegister } from 'react-hook-form'
 import type { Auth } from '@@types/authentication'
 

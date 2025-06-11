@@ -5,7 +5,7 @@ import {
 import {
   type LinkVariants,
   linkVariants,
-} from './linkVariants'
+} from '@variants/link'
 import { classMerger } from '@utils/classMerger'
 
 type AppLinkProps = LinkProps & LinkVariants

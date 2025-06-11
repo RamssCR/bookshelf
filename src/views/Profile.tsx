@@ -1,6 +1,6 @@
 import { ComingSoon } from "@components/coming-soon/ComingSoon"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 import { Layout } from "@layouts/Layout"
 import { userStore } from "@stores/userStore"
 import { UserIcon } from "lucide-react"

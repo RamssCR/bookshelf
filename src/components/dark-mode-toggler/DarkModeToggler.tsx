@@ -1,5 +1,5 @@
-import { Switch } from "@components/ui/switch/switch"
-import { Title } from "@components/ui/title/title"
+import { Switch } from "@components/ui/switch"
+import { Title } from "@components/ui/title"
 import { themeStore } from "@stores/themeStore"
 import { classMerger } from '@utils/classMerger'
 

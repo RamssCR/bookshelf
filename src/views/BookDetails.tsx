@@ -1,12 +1,12 @@
-import { AppLink } from "@components/ui/app-link/AppLink"
+import { AppLink } from "@components/ui/AppLink"
 import { Book, ChevronRight, ListOrdered, Scroll } from "lucide-react"
 import { ComingSoon } from "@components/coming-soon/ComingSoon"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
-import { Image } from "@components/ui/image/image"
+import { Image } from "@components/ui/image"
 import { Layout } from "@layouts/Layout"
-import { Title } from '@components/ui/title/title'
+import { Title } from '@components/ui/title'
 import { useLocation } from "react-router-dom"
-import { Badge } from "@components/ui/badge/badge"
+import { Badge } from "@components/ui/badge"
 
 type RedirectToProps = {
   isYourBooks: boolean

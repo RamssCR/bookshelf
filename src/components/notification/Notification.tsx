@@ -1,6 +1,6 @@
 import { Moon } from 'lucide-react'
-import { Title } from '@components/ui/title/title'
-import { Switch } from '@components/ui/switch/switch'
+import { Title } from '@components/ui/title'
+import { Switch } from '@components/ui/switch'
 import { themeStore } from '@stores/themeStore'
 
 export const Notification = () => {

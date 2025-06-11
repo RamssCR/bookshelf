@@ -3,7 +3,7 @@ import { Slot } from "@radix-ui/react-slot"
 import {
   type ButtonVariants,
   buttonVariants,
-} from './buttonVariants'
+} from '@variants/button'
 import { classMerger } from "@utils/classMerger"
 
 export const Button = ({

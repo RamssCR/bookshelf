@@ -1,29 +1,24 @@
 import type { BookCardProps } from "@@types/bookCard"
+import type { BookFetch } from '@@types/fetchers'
 import type { Item } from "@@types/combobox"
-import { BookCard } from "@components/book-card/BookCard"
-import { BookCardSkeleton } from '@components/book-card/BookCardSkeleton'
-import { Combobox } from "@components/ui/combobox/combobox"
+import { BookGridView } from '@layouts/BookGridView'
+import { Combobox } from "@components/ui/combobox"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
-import { EmptyDiscoverBooks } from '@components/empty-cards/EmptyDiscoverBooks'
 import { InnerPagination } from "@components/discover/InnerPagination"
-import { Label } from "@components/ui/label/label"
+import { Label } from "@components/ui/label"
 import { Layout } from "@layouts/Layout"
 import { ShowResults } from "@components/show-results/ShowResults"
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
+import { getBooks } from "@services/books"
+import { getBookshelfIds } from "@services/bookshelves"
 import { getGenres } from "@services/genres"
 import { useId } from "react"
 import { usePagination } from "@hooks/usePagination"
 import { usePaginationFilter } from '@hooks/usePaginationFilter'
-import { useQuery as useReactQuery } from '@tanstack/react-query'
 import { useQuery } from "@hooks/useQuery"
+import { useQuery as useReactQuery } from '@tanstack/react-query'
 
 const BOOKS_PER_PAGE = 10
-
-const EmptyMessage = () => (
-  <section className="w-full flex flex-col items-center justify-center gap-4 mt-4">
-    <EmptyDiscoverBooks />
-  </section>
-)
 
 const Header = () => (
   <section className="w-full flex flex-col items-start">
@@ -48,29 +43,14 @@ const FilterSection = ({ genres }: { genres: Item[] }) => (
   </section>
 )
 
-const BookGrid = ({ books }: { books: BookCardProps[] }) => (
-  <section className="w-full grid grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-4 lg:gap-y-7 xl:grid-cols-5">
-    {books.map((book) => (
-      <BookCard key={book.slug} {...book} />
-    ))}
-  </section>
-)
-
-const LoadingSkeleton = () => (
-  <section className="w-full grid grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-4 lg:gap-y-7 xl:grid-cols-5">
-    {Array.from({ length: BOOKS_PER_PAGE }, (_, index) => (
-      <BookCardSkeleton key={index} />
-    ))}
-  </section>
-)
-
 export const Discover = () => {
   const paginationId = useId()
   const query = useQuery()
   const genre = query.get("genre")
 
-  const { data, status } = usePaginationFilter({
-    query: query.get("page"),
+  const { data, status } = usePaginationFilter<BookCardProps, BookFetch>({
+    fetcher: getBooks,
+    page: query.get("page"),
     limit: BOOKS_PER_PAGE,
     genre
   })
@@ -86,24 +66,32 @@ export const Discover = () => {
     path: "discover"
   })
 
+  const { data: ids, refetch } = useReactQuery({
+    queryKey: ['booksIds'],
+    queryFn: () => getBookshelfIds()
+  })
+
   const genres = genresData?.data?.data ?? []
+  const isAdded = (slug: string) => ids?.data?.data.includes(slug)
+  console.log(ids?.data?.data)
 
   const renderContent = () => {
-    if (status === 'pending') return <LoadingSkeleton />
-    if (status === 'error') return <EmptyMessage />
-
     return (
       <>
         <ShowResults page={data?.page} total={data?.totalPages} />
-        {Array.isArray(data?.books) && data.books.length > 0 
-          ? <BookGrid books={data.books} /> 
-          : <EmptyMessage />
-        }
+        <BookGridView
+          books={data?.books as BookCardProps[]}
+          location="discover"
+          skeletonCount={BOOKS_PER_PAGE}
+          status={status}
+          isAdded={isAdded}
+          refetch={refetch}
+        />
         <InnerPagination
           path="discover"
           previous={`discover?page=${previousLimit()}`}
           next={`discover?page=${nextLimit()}`}
-          pagination={Array.from({ length: data?.totalPages }, (_, index) => ({
+          pagination={Array.from({ length: data?.totalPages ?? 0 }, (_, index) => ({
             id: `${paginationId}-${index}`,
             current: index + 1,
             isActive: pageActive(index + 1),

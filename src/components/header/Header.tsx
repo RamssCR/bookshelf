@@ -1,4 +1,4 @@
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 import { MobileNavbar } from "./MobileNavbar"
 import { User } from "./User"
 import { userStore } from "@stores/userStore"

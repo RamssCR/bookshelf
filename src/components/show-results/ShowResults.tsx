@@ -1,6 +1,6 @@
 type ShowResultsProps = {
-  page: number
-  total: number
+  page?: number
+  total?: number
 }
 
 export const ShowResults = ({ page = 0, total = 0 }: ShowResultsProps) => (

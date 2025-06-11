@@ -1,5 +1,5 @@
-import { AppLink } from '@components/ui/app-link/AppLink'
-import { CardTitle, CardDescription } from '@components/ui/card/card'
+import { AppLink } from '@components/ui/AppLink'
+import { CardTitle, CardDescription } from '@components/ui/card'
 import { ChevronLeft } from 'lucide-react'
 
 type TitleContentProps = {

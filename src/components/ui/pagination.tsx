@@ -6,8 +6,8 @@ import {
 } from "lucide-react"
 
 import { classMerger } from "@utils/classMerger"
-import { Button } from "@components/ui/button/button"
-import { buttonVariants } from '@components/ui/button/buttonVariants'
+import { Button } from "@components/ui/button"
+import { buttonVariants } from '@variants/button'
 import { Link, type LinkProps } from "react-router-dom"
 
 const Pagination = ({ className, ...props }: ComponentProps<"nav">) => {

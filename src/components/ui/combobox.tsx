@@ -5,17 +5,17 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@components/ui/command/command"
+} from "@components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@components/ui/popover/popover"
+} from "@components/ui/popover"
 import { Check, ChevronsUpDown } from "lucide-react"
 import type { InputHTMLAttributes } from "react"
 import type { Item } from "@@types/combobox"
 import { classMerger } from "@utils/classMerger"
-import { Button } from "@components/ui/button/button"
+import { Button } from "@components/ui/button"
 import { useComboboxFilter } from "@hooks/useComboboxFilter"
 
 type ComboboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> & {

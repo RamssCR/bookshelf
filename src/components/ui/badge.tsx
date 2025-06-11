@@ -4,7 +4,7 @@ import { classMerger } from "@utils/classMerger"
 import { 
   type BadgeVariants, 
   badgeVariants 
-} from './badgeVariants'
+} from '@variants/badge'
 
 export const Badge = ({
   className,

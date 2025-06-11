@@ -1,7 +1,7 @@
 import { ComingSoon } from "@components/coming-soon/ComingSoon"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
 import { Layout } from "@layouts/Layout"
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 
 export const Bookshelf = () => {
   return (
