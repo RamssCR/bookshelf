@@ -6,6 +6,7 @@ import { Login } from './views/Login'
 import { Profile } from './views/Profile'
 import { Protected } from './layouts/Protected'
 import { Register } from './views/Register'
+import { Toaster } from './components/ui/toaster'
 import { YourBooks } from './views/YourBooks'
 import { useThemeEffect } from './hooks/useThemeEffect'
 
@@ -27,6 +28,7 @@ export const App = () => {
           <Route path="/your-books/books/:id" element={<BookDetails />} />
         </Route>
       </Routes>
+      <Toaster />
     </BrowserRouter>
   )
 }

@@ -8,7 +8,7 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@components/ui/dialog/dialog"
+} from "@components/ui/dialog"
 
 const Command = ({
   className,

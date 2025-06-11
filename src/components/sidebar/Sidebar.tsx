@@ -1,6 +1,6 @@
-import { AppLink } from '@components/ui/app-link/AppLink'
+import { AppLink } from '@components/ui/AppLink'
 import { DarkModeToggler } from "@components/dark-mode-toggler/DarkModeToggler"
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 import { Update } from '@components/notification/Update'
 import { classMerger } from '@utils/classMerger'
 import links from '@data/internal.links.json'

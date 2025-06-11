@@ -1,4 +1,4 @@
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 
 export const EmptyDiscoverBooks = () => {
   return (

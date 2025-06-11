@@ -1,6 +1,6 @@
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 import { User as UserIcon } from 'lucide-react'
-import { AppLink } from "@components/ui/app-link/AppLink"
+import { AppLink } from "@components/ui/AppLink"
 import { classMerger } from "@utils/classMerger"
 
 export const User = ({ username, className }: { username?: string, className?: string }) => {

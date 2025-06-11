@@ -1,4 +1,4 @@
-import { Button } from "@components/ui/button/button"
+import { Button } from "@components/ui/button"
 import { Menu } from 'lucide-react'
 import {
   Sheet,
@@ -7,8 +7,8 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@components/ui/sheet/sheet'
-import { AppLink } from "@components/ui/app-link/AppLink"
+} from '@components/ui/sheet'
+import { AppLink } from "@components/ui/AppLink"
 import { User } from "./User"
 import { DarkModeToggler } from "@components/dark-mode-toggler/DarkModeToggler"
 import { Update } from "@components/notification/Update"

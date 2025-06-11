@@ -1,5 +1,5 @@
 import { Milestone } from 'lucide-react'
-import { Title } from "@components/ui/title/title"
+import { Title } from "@components/ui/title"
 import { classMerger } from '@utils/classMerger'
 
 type UpdateProps = {

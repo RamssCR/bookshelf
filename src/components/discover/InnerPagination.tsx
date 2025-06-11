@@ -7,7 +7,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '@components/ui/pagination/pagination'
+} from '@components/ui/pagination'
 import { useId } from 'react'
 
 type InnerPaginationProps = {

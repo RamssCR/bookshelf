@@ -1,5 +1,5 @@
-import { AppLink } from "@components/ui/app-link/AppLink";
-import { Title } from "@components/ui/title/title";
+import { AppLink } from "@components/ui/AppLink";
+import { Title } from "@components/ui/title";
 
 export const NoBooks = () => (
   <section className="w-full h-[60svh] lg:h-full flex flex-col items-center justify-center gap-2">

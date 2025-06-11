@@ -3,9 +3,9 @@ import {
   CardHeader,
   CardContent,
   CardFooter,
-} from '@components/ui/card/card'
-import { AppLink } from '@components/ui/app-link/AppLink'
-import { Image } from '@components/ui/image/image'
+} from '@components/ui/card'
+import { AppLink } from '@components/ui/AppLink'
+import { Image } from '@components/ui/image'
 import { LoginForm } from '@components/login/LoginForm'
 import { Notification } from '@components/notification/Notification'
 import { SignContainer } from '@components/ui/containers/SignContainer'

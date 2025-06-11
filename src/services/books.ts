@@ -1,10 +1,5 @@
+import type { BookFetch } from '@@types/fetchers';
 import { axiosInstance } from '@plugins/axiosInstance'
-
-type GetBooks = {
-  genre?: string | null
-  page?: number
-  limit?: number
-}
 
 /**
  * Retrieves a list of books based on the 
@@ -14,7 +9,7 @@ export const getBooks = async ({
   genre, 
   page = 1, 
   limit = 10 
-}: GetBooks = {}) =>
+}: BookFetch = {}) =>
   await axiosInstance.get('/books', {
     params: {
       genre,

@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom"
 type UsePaginationProps = {
   query: string | null
   path: string
-  limit: number
+  limit?: number
 }
 
-export const usePagination = ({ query, path, limit }: UsePaginationProps) => {
+export const usePagination = ({ query, path, limit = 5 }: UsePaginationProps) => {
   const navigateTo = useNavigate()
 
   useEffect(() => {
