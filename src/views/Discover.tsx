@@ -1,6 +1,7 @@
 import type { BookCardProps } from "@@types/bookCard"
 import type { BookFetch } from '@@types/fetchers'
 import type { Item } from "@@types/combobox"
+import { BOOKS_PER_PAGE } from '@utils/constants'
 import { BookGridView } from '@layouts/BookGridView'
 import { Combobox } from "@components/ui/combobox"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
@@ -17,8 +18,6 @@ import { usePagination } from "@hooks/usePagination"
 import { usePaginationFilter } from '@hooks/usePaginationFilter'
 import { useQuery } from "@hooks/useQuery"
 import { useQuery as useReactQuery } from '@tanstack/react-query'
-
-const BOOKS_PER_PAGE = 10
 
 const Header = () => (
   <section className="w-full flex flex-col items-start">
