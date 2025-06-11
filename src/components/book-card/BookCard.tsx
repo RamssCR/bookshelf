@@ -7,7 +7,7 @@ import {
   addBookToShelf,
   removeFromShelf,
 } from '@services/bookshelves'
-import type { AxiosResponse } from 'axios'
+import { AxiosError, type AxiosResponse } from 'axios'
 import type { BookCardProps } from '@@types/bookCard'
 import type { MouseEventHandler } from 'react'
 import { AppLink } from "@components/ui/AppLink"
@@ -77,7 +77,9 @@ export const BookCard = ({
         })
       }
     } catch (error) {
-      console.error('Error updating book shelf:', error)  
+      if (error instanceof AxiosError) {
+        console.error('Error updating book shelf:', error.message)  
+      }
       triggerToast({
         title: 'Error updating book shelf',
         type: 'error',
