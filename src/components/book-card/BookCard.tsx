@@ -57,12 +57,17 @@ export const BookCard = ({
     mutationFn: () => addBookToShelf(slug),
   })
 
+  const { mutateAsync: removeFromShelfAsync } = useMutation({
+    mutationKey: ['removeFromShelf', slug],
+    mutationFn: (slug: string) => removeFromShelf(slug),
+  })
+
   const handleClick: MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault()
     e.stopPropagation()
     try {
       if (isAdded) {
-        await removeFromShelf(slug)
+        await removeFromShelfAsync(slug)
         triggerToast({
           title: 'Book removed from shelf',
           type: 'success',
