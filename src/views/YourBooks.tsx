@@ -1,49 +1,61 @@
-import { BookCard } from "@components/book-card/BookCard"
+import type { BookCardProps } from "@@types/bookCard"
+import type { BookFetch } from "@@types/fetchers"
+import { BOOKS_PER_PAGE } from '@utils/constants'
+import { BookGridView } from "@layouts/BookGridView"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
-import { Layout } from "@layouts/Layout"
-import { Title } from "@components/ui/title/title"
 import { InnerPagination } from "@components/discover/InnerPagination"
+import { Layout } from "@layouts/Layout"
+import { Title } from "@components/ui/title"
+import { getBookshelf } from "@services/bookshelves"
 import { useId } from "react"
-import { useQuery } from "@hooks/useQuery"
 import { usePagination } from "@hooks/usePagination"
+import { usePaginationFilter } from "@hooks/usePaginationFilter"
+import { useQuery } from "@hooks/useQuery"
+
+const Header = () => (
+  <section className="w-full flex flex-col items-start">
+    <Title className="text-2xl font-semibold text-primary">Your Books</Title>
+    <p className="text-muted-foreground font-medium">Have a look at the books you're already reading, or perhaps, start a new one</p>
+  </section>
+)
 
 export const YourBooks = () => {
   const paginationId = useId()
   const query = useQuery()
-  const { 
-    pageActive, 
-    nextLimit, 
-    previousLimit 
+  const {
+    pageActive,
+    nextLimit,
+    previousLimit
   } = usePagination({
-    query: query.get("page"), 
-    path: 'your-books', 
+    query: query.get("page"),
+    path: 'your-books',
     limit: 5
+  })
+
+  const { data, status, refetch } = usePaginationFilter<BookCardProps, BookFetch>({
+    fetcher: getBookshelf,
+    page: query.get("page"),
+    limit: BOOKS_PER_PAGE,
+    functionKey: 'your-books'
   })
 
   return (
     <Layout>
       <ContentContainer>
-        <section className="w-full flex flex-col items-start">
-          <Title className="text-2xl font-semibold text-primary">Your Books</Title>
-          <p className="text-muted-foreground font-medium">Have a look at the books you're already reading, or perhaps, start a new one</p>
-        </section>
-        <section className="w-full grid grid-cols-2 gap-x-4 gap-y-7 md:grid-cols-4 xl:grid-cols-5">
-          {Array.from({ length: 15 }, (_, index) => (
-            <BookCard
-              key={index}
-              title="The Great Gatsby"
-              Author={{ id: "1", name: "F. Scott Fitzgerald" }}
-              Genre={{ id: "1", name: "Fiction" }}
-              cover="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGJvb2slMjBjb3ZlZXxlbnwwfHx8fDE2ODQ5NTY1NzA&ixlib=rb-4.0.3&q=80&w=400"
-              slug="the-great-gatsby"
-            />
-          ))}
-        </section>
-        <InnerPagination 
+        <Header />
+        <BookGridView
+          books={data?.books as BookCardProps[]}
+          location="your-books"
+          skeletonCount={BOOKS_PER_PAGE}
+          status={status}
+          isAdded={() => true}
+          refetch={refetch}
+        />
+        <InnerPagination
           path="your-books"
           previous={`your-books?page=${previousLimit()}`}
           next={`your-books?page=${nextLimit()}`}
-          pagination={Array.from({ length: 5 }, (_, index) => ({ 
+          pagination={Array.from({ length: data?.totalPages ?? 0 }, (_, index) => ({
             id: `${paginationId}-${index}`,
             current: index + 1,
             isActive: pageActive(index + 1),
