@@ -19,7 +19,7 @@ type BookGridViewProps = {
 const EmptyComponentByLocation = ({ location = 'discover' }) => {
   if (location === 'discover') {
     return (
-      <section className="w-full grid grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-4 lg:gap-y-7 xl:grid-cols-5">
+      <section className="w-full h-full flex flex-col items-center justify-center gap-4 mt-4">
         <EmptyDiscoverBooks />
       </section>
     )
