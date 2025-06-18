@@ -23,9 +23,9 @@ export const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/bookshelf" element={<Bookshelf />} />
           <Route path="/discover" element={<Discover />} />
-          <Route path="/discover/books/:id" element={<BookDetails />} />
+          <Route path="/discover/books/:slug" element={<BookDetails />} />
           <Route path="/your-books" element={<YourBooks />} />
-          <Route path="/your-books/books/:id" element={<BookDetails />} />
+          <Route path="/your-books/books/:slug" element={<BookDetails />} />
         </Route>
       </Routes>
       <Toaster />
