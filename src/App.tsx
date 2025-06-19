@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Bookshelf } from './views/Bookshelf'
 import { BookDetails } from './views/BookDetails'
+import { BookReader } from '@views/BookReader'
 import { Discover } from './views/Discover'
 import { Login } from './views/Login'
 import { Profile } from './views/Profile'
@@ -24,8 +25,10 @@ export const App = () => {
           <Route path="/bookshelf" element={<Bookshelf />} />
           <Route path="/discover" element={<Discover />} />
           <Route path="/discover/books/:slug" element={<BookDetails />} />
+          <Route path="/discover/books/read/:slug/:chapter?" element={<BookReader />} />
           <Route path="/your-books" element={<YourBooks />} />
           <Route path="/your-books/books/:slug" element={<BookDetails />} />
+          <Route path="/your-books/books/read/:slug/:chapter?" element={<BookReader />} />
         </Route>
       </Routes>
       <Toaster />
