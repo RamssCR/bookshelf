@@ -72,7 +72,6 @@ export const Discover = () => {
 
   const genres = genresData?.data?.data ?? []
   const isAdded = (slug: string) => ids?.data?.data.includes(slug)
-  console.log(ids?.data?.data)
 
   const renderContent = () => {
     return (
