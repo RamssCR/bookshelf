@@ -69,8 +69,8 @@ export const BookReader = () => {
           <ChapterPagination
             bookSlug={slug ?? ""}
             basePath={basePath}
-            previous={1}
-            next={2}
+            previous={Math.max(1, Number(chapter) - 1)}
+            next={Number(chapter) + 1}
           />
         </section>
       </ContentContainer>
