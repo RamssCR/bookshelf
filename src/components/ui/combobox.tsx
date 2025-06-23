@@ -36,6 +36,7 @@ export const Combobox = ({ items, name, ...props }: ComboboxProps) => {
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
+          aria-label="Combobox trigger"
           variant="outline"
           role="combobox"
           aria-expanded={open}

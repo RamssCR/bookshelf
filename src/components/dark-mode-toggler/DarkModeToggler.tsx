@@ -19,7 +19,11 @@ export const DarkModeToggler = ({ className }: { className?: string }) => {
       )}
     >
       <Title as="h6" className="text-primary font-medium text-base">Dark Mode</Title>
-      <Switch checked={theme === 'dark'} onCheckedChange={handleThemeChange} />
+      <Switch 
+        checked={theme === 'dark'} 
+        onCheckedChange={handleThemeChange} 
+        aria-label="Toggle theme"
+      />
     </section>
   )
 }

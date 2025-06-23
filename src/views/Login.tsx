@@ -5,21 +5,15 @@ import {
   CardFooter,
 } from '@components/ui/card'
 import { AppLink } from '@components/ui/AppLink'
-import { Image } from '@components/ui/image'
 import { LoginForm } from '@components/login/LoginForm'
 import { Notification } from '@components/notification/Notification'
-import { SignContainer } from '@components/ui/containers/SignContainer'
+import { SignLayout } from '@layouts/SignLayout'
 import { TitleContent } from '@components/signing/TitleContent'
 import { currentYear } from '@utils/currentYear'
 
 export const Login = () => {
   return (
-    <SignContainer>
-      <Image
-        src="/images/sign-banner.jpg"
-        alt="Sign up banner"
-        className="hidden lg:block w-full h-screen"
-      />
+    <SignLayout path="login">
       <Card className="w-full max-w-[30em] lg:max-w-full h-full bg-background lg:rounded-none flex flex-col items-center gap-4">
         <CardHeader className="w-full">
           <TitleContent
@@ -41,6 +35,6 @@ export const Login = () => {
           Copyright © {currentYear()} Bookshelf. All rights reserved.
         </CardFooter>
       </Card>
-    </SignContainer>
+    </SignLayout>
   )
 }
