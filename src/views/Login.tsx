@@ -13,7 +13,7 @@ import { currentYear } from '@utils/currentYear'
 
 export const Login = () => {
   return (
-    <SignLayout>
+    <SignLayout path="login">
       <Card className="w-full max-w-[30em] lg:max-w-full h-full bg-background lg:rounded-none flex flex-col items-center gap-4">
         <CardHeader className="w-full">
           <TitleContent
