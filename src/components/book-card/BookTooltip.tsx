@@ -17,10 +17,12 @@ export const BookTooltip = ({ onClick, isAdded = false }: BookTooltipProps) => {
 
   return (
     <Tooltip>
-      <TooltipTrigger onClick={onClick}>
-        <Icon 
-          aria-label={label}
-          role="button"
+      <TooltipTrigger 
+        onClick={onClick}
+        aria-label={label}
+      >
+        <Icon
+          aria-hidden="true"
           className="hidden text-background bg-primary rounded-full lg:flex items-center justify-center font-medium size-7 p-1 opacity-0 group-hover:opacity-100 transition-all hover:cursor-pointer hover:scale-105" 
         />
       </TooltipTrigger>

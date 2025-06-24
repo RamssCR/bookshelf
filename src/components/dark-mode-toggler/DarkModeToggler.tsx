@@ -13,16 +13,24 @@ export const DarkModeToggler = ({ className }: { className?: string }) => {
 
   return (
     <section 
+      role="group"
+      aria-labelledby="dark-mode-toggler"
       className={classMerger(
         'w-full flex items-center justify-between',
         className
       )}
     >
-      <Title as="h6" className="text-primary font-medium text-base">Dark Mode</Title>
+      <Title 
+        as="h6" 
+        className="text-primary font-medium text-base"
+        id="dark-mode-toggler"
+      >
+        Dark Mode
+      </Title>
       <Switch 
         checked={theme === 'dark'} 
         onCheckedChange={handleThemeChange} 
-        aria-label="Toggle theme"
+        aria-labelledby="dark-mode-toggler"
       />
     </section>
   )

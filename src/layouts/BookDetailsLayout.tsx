@@ -16,20 +16,35 @@ export const BookDetailsLayout = ({ book, isYourBooks }: BookDetailsLayoutProps)
   return (
     <>
       {/* Book Details */}
-      <section className="w-full flex flex-col items-center gap-4 md:flex-row md:items-start">
+      <section 
+        className="w-full flex flex-col items-center gap-4 md:flex-row md:items-start"
+        role="region"
+        aria-labelledby="book-title"
+      >
         <Image
           src={book?.cover}
-          alt={book?.title}
+          alt={`Cover of ${book?.title}`}
           className="w-[15em] rounded-xs aspect-[9_16] shadow"
         />
         <section className="flex w-full flex-col items-center gap-2 text-center md:text-left md:items-start md:mt-1">
-          <Title className="text-2xl font-semibold text-primary w-full md:text-3xl">{book?.title}</Title>
+          <Title 
+            className="text-2xl font-semibold text-primary w-full md:text-3xl"
+            id="book-title"
+          >
+            {book?.title}
+          </Title>
           <p className="text-muted-foreground font-medium w-full">Book created by {book?.author}</p>
           <RedirectTo
             isYourBooks={isYourBooks}
             slug={book?.slug}
           />
-          <Title as="h2" className="text-xl font-semibold text-primary mt-4 pb-3 border-b border-b-border w-full">Book Summary</Title>
+          <Title 
+            as="h2"
+            id="book-summary-title" 
+            className="text-xl font-semibold text-primary mt-4 pb-3 border-b border-b-border w-full"
+          >
+            Book Summary
+          </Title>
           <article className="mt-1 w-full inline-flex items-center gap-2">
             <Badge>{book?.genre}</Badge>
           </article>

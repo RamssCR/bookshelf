@@ -51,9 +51,12 @@ export const LoginForm = () => {
 
   return (
     <form
+      role="form"
+      aria-labelledby="login-form-title"
       className="w-full flex flex-col gap-5"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <h2 id="login-form-title" className="sr-only">Login form</h2>
       {error && <ErrorNotification message={error?.response?.data?.message} />}
       {fields.map(({ id, ...rest }) => {
         return (
@@ -66,7 +69,12 @@ export const LoginForm = () => {
           />
         )
       })}
-      <Button className="w-full mt-2">
+      <Button 
+        type="submit"
+        className="w-full mt-2"
+        disabled={isPending}
+        aria-busy={isPending}
+      >
         {isPending ? 'Logging in...' : 'Login'}
       </Button>
     </form>

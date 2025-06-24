@@ -21,26 +21,34 @@ export const InnerPagination = ({ path, pagination, previous = "", next = "" }: 
   const paginationId = useId()
 
   return (
-    <Pagination>
+    <Pagination role="navigation" aria-label="Pagination">
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious to={`/${previous}`} />
+          <PaginationPrevious 
+            to={`/${previous}`} 
+            aria-label="Go to previous page"
+          />
         </PaginationItem>
         {pagination?.map(item => (
           <PaginationItem key={`${paginationId}-${item.id}`}>
             <PaginationLink
               to={`/${path}?page=${item.current}`}
               isActive={item.isActive}
+              aria-current={item.isActive ? 'page' : undefined}
+              aria-label={`Go to page ${item.current}`}
             >
               {item.current}
             </PaginationLink>
           </PaginationItem>
         ))}
         <PaginationItem>
-          <PaginationEllipsis />
+          <PaginationEllipsis aria-hidden="true" />
         </PaginationItem>
         <PaginationItem>
-          <PaginationNext to={`/${next}`} />
+          <PaginationNext 
+            to={`/${next}`}
+            aria-label="Go to next page"
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>

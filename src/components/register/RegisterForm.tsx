@@ -53,9 +53,12 @@ export const RegisterForm = () => {
 
   return (
     <form
+      role="form"
+      aria-labelledby="register-form-title"
       className='w-full flex flex-col gap-5'
       onSubmit={handleSubmit(onSubmit)}
     >
+      <h2 id="register-form-title" className="sr-only">Sign Up Form</h2>
       {error && <ErrorNotification message={error?.response?.data?.message} />}
       {fields.map(({ id, ...rest }) => (
         <Field
@@ -66,7 +69,12 @@ export const RegisterForm = () => {
           autoComplete={autoComplete[id]}
         />
       ))}
-      <Button type="submit" className="w-full mt-2">
+      <Button 
+        type="submit" 
+        className="w-full mt-2"
+        disabled={isPending}
+        aria-busy={isPending}
+      >
         {isPending ? 'Signing up...' : 'Sign Up'}
       </Button>
     </form>

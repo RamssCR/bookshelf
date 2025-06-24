@@ -11,6 +11,7 @@ export type FieldProps = {
   placeholder: string
   autoComplete?: string
   register: UseFormRegister<Auth>
+  required?: boolean
 }
 
 export const Field = ({ 
@@ -19,13 +20,17 @@ export const Field = ({
   placeholder, 
   autoComplete, 
   register, 
+  required = true,
   type = "text" 
 }: FieldProps) => (
   <section className="grid w-full gap-3">
-    <Label htmlFor={id}>{label}</Label>
+    <Label htmlFor={id}>
+      {label} {required && <span aria-hidden="true" className="text-destructive">*</span>}
+    </Label>
     <Input 
       type={type} 
-      id={id} 
+      id={id}
+      aria-required={required} 
       placeholder={placeholder} 
       autoComplete={autoComplete === 'username' ? 'name' : autoComplete} 
       {...register(id as keyof Auth, { required: false })}
