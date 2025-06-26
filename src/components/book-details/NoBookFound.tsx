@@ -14,8 +14,17 @@ export const NoBookFound = ({ path = 'discover' }: { path?: 'your-books' | 'disc
   }
 
   return (
-    <section className="w-full h-full flex flex-col justify-center items-center gap-1">
-      <Title className="text-2xl text-primary lg:text-3xl">Book not found!</Title>
+    <section 
+      className="w-full h-full flex flex-col justify-center items-center gap-1"
+      role="alert"
+      aria-labelledby="book-not-found-title"
+    >
+      <Title 
+        className="text-2xl text-primary lg:text-3xl"
+        id="book-not-found-title"
+      >
+        Book not found!
+      </Title>
       <p className="text-sm text-muted-foreground">We couldn't find the book you were looking for.</p>
       <GoBack />
     </section>

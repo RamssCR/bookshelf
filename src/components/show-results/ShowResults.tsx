@@ -4,7 +4,10 @@ type ShowResultsProps = {
 }
 
 export const ShowResults = ({ page = 0, total = 0 }: ShowResultsProps) => (
-  <p className="-mt-2 text-muted-foreground text-sm font-medium">
+  <p 
+    className="-mt-2 text-muted-foreground text-sm font-medium"
+    aria-live="polite"
+  >
     Page {page} of {total}
   </p>
 )

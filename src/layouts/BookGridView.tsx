@@ -6,6 +6,7 @@ import { BookCard } from '@components/book-card/BookCard'
 import { BookCardSkeleton } from '@components/book-card/BookCardSkeleton'
 import { EmptyDiscoverBooks } from '@components/discover/EmptyDiscoverBooks'
 import { NoBooks } from '@components/no-books/NoBooks'
+import { Title } from '@components/ui/title'
 
 type BookGridViewProps = {
   books: BookCardProps[]
@@ -44,7 +45,18 @@ export const BookGridView = ({
 }: BookGridViewProps) => {
   if (status === 'pending') {
     return (
-      <section className="w-full grid grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-4 lg:gap-y-7 xl:grid-cols-5">
+      <section 
+        className="w-full grid grid-cols-2 gap-x-4 gap-y-4 md:grid-cols-4 lg:gap-y-7 xl:grid-cols-5"
+        aria-busy="true"
+        aria-labelledby="book-grid-skeleton-title"
+      >
+        <Title
+          as="h2"
+          className="sr-only"
+          id="book-grid-skeleton-title"
+        >
+          Loading books...
+        </Title>
         {Array.from({ length: skeletonCount }, (_, index) => (
           <BookCardSkeleton key={index} />
         ))}

@@ -15,16 +15,22 @@ type ChapterPaginationProps = {
 }
 
 export const ChapterPagination = ({ basePath, bookSlug, previous, next }: ChapterPaginationProps) => (
-  <Pagination>
+  <Pagination role="navigation" aria-label="Chapter Pagination">
     <PaginationContent>
       <PaginationItem>
-        <PaginationPrevious to={`/${basePath}/books/read/${bookSlug}/${previous}`} />
+        <PaginationPrevious 
+          to={`/${basePath}/books/read/${bookSlug}/${previous}`}
+          aria-label="Go to previous chapter"
+        />
       </PaginationItem>
       <PaginationItem>
-        <PaginationEllipsis />
+        <PaginationEllipsis aria-hidden="true" />
       </PaginationItem>
       <PaginationItem>
-        <PaginationNext to={`/${basePath}/books/read/${bookSlug}/${next}`} />
+        <PaginationNext 
+          to={`/${basePath}/books/read/${bookSlug}/${next}`}
+          aria-label="Go to next chapter"
+        />
       </PaginationItem>
     </PaginationContent>
   </Pagination>

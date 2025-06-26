@@ -12,7 +12,7 @@ export const TitleContent = ({ title, description }: TitleContentProps) => {
     <>
       <CardTitle className="flex flex-col items-start gap-4">
         <AppLink to="/" className="flex items-center gap-1 font-medium text-primary text-sm">
-          <ChevronLeft className="fill-primary size-4" />
+          <ChevronLeft className="fill-primary size-4" aria-hidden="true" />
           Back to the landing page
         </AppLink>
         {title}

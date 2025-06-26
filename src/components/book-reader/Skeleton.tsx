@@ -1,4 +1,5 @@
 import { Skeleton } from '@components/ui/skeleton'
+import { Title } from '@components/ui/title'
 
 const SkeletonParagraph = () => (
   <div className="space-y-2 w-full">
@@ -9,7 +10,18 @@ const SkeletonParagraph = () => (
 )
 
 export const SkeletonReader = () => (
-  <section className="flex w-full flex-col items-start gap-5">
+  <section 
+    className="flex w-full flex-col items-start gap-5"
+    aria-busy="true"
+    aria-labelledby="book-reader-skeleton-title"
+  >
+    <Title 
+      as="h2"
+      className="sr-only"
+      id="book-reader-skeleton-title"
+    >
+      Loading book content...
+    </Title>
     <Skeleton className="h-8 w-full" />
     <article className="space-y-2 mb-4">
       <Skeleton className="w-40 h-5" />

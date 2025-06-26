@@ -1,16 +1,12 @@
 import type { BookCardProps } from "@@types/bookCard"
-import type { BookFetch } from "@@types/fetchers"
 import { BOOKS_PER_PAGE } from '@utils/constants'
 import { BookGridView } from "@layouts/BookGridView"
 import { ContentContainer } from "@components/ui/containers/ContentContainer"
 import { InnerPagination } from "@components/discover/InnerPagination"
 import { Layout } from "@layouts/Layout"
 import { Title } from "@components/ui/title"
-import { getBookshelf } from "@services/bookshelves"
 import { useId } from "react"
-import { usePagination } from "@hooks/usePagination"
-import { usePaginationFilter } from "@hooks/usePaginationFilter"
-import { useQuery } from "@hooks/useQuery"
+import { useYourBooks } from "@hooks/useYourBooks"
 
 const Header = () => (
   <section className="w-full flex flex-col items-start">
@@ -21,23 +17,14 @@ const Header = () => (
 
 export const YourBooks = () => {
   const paginationId = useId()
-  const query = useQuery()
   const {
+    data,
+    status,
+    refetch,
     pageActive,
     nextLimit,
-    previousLimit
-  } = usePagination({
-    query: query.get("page"),
-    path: 'your-books',
-    limit: 5
-  })
-
-  const { data, status, refetch } = usePaginationFilter<BookCardProps, BookFetch>({
-    fetcher: getBookshelf,
-    page: query.get("page"),
-    limit: BOOKS_PER_PAGE,
-    functionKey: 'your-books'
-  })
+    previousLimit,
+  } = useYourBooks()
 
   return (
     <Layout>

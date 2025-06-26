@@ -12,6 +12,6 @@ export const RedirectTo = ({ isYourBooks, slug }: RedirectToProps) => (
     className="mt-3 w-fit group inline-flex items-center gap-0.5 text-base font-medium text-primary transition-all hover:underline"
   >
     {isYourBooks ? 'Continue Reading' : 'Read Book'}
-    <ChevronRight className="text-primary size-5 duration-100 group-hover:translate-x-1" />
+    <ChevronRight aria-hidden="true" className="text-primary size-5 duration-100 group-hover:translate-x-1" />
   </AppLink>
 )

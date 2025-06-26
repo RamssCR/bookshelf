@@ -13,7 +13,7 @@ import { User } from "./User"
 import { DarkModeToggler } from "@components/dark-mode-toggler/DarkModeToggler"
 import { Update } from "@components/notification/Update"
 import { useLocation } from "react-router-dom"
-import links from '@data/internal.links.json';
+import links from '@data/internal.links.json'
 import { classMerger } from "@utils/classMerger"
 import { userStore } from "@stores/userStore"
 import { logout } from "@services/authentication"
@@ -30,13 +30,13 @@ export const MobileNavbar = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">
-          <Menu className="text-primary" />
+        <Button variant="outline" aria-label="Open Mobile Menu">
+          <Menu className="text-primary" aria-hidden="true" />
         </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Menu</SheetTitle>
+          <SheetTitle id="mobile-menu-title">Menu</SheetTitle>
           <SheetDescription className="text-sm">
             Discover new books, manage your bookshelf, and more.
           </SheetDescription>
@@ -45,7 +45,11 @@ export const MobileNavbar = () => {
           username={user?.username ?? 'Unknown User'}
           className="px-4 w-full flex items-center gap-3"
         />
-        <nav className="py-4 px-2 w-full flex flex-col items-start">
+        <nav 
+          className="py-4 px-2 w-full flex flex-col items-start"
+          aria-labelledby="mobile-menu-title"
+          role="navigation"
+        >
           {links.map(link => (
             <AppLink
               key={link.id}

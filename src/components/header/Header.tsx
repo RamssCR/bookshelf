@@ -7,8 +7,18 @@ export const Header = () => {
   const { user } = userStore()
 
   return (
-    <header className="fixed z-10 w-full bg-background border-b border-b-input flex items-center justify-between py-4 px-5 lg:pr-8 lg:pl-6">
-      <Title as="h2" className="text-primary text-xl">Bookshelf</Title>
+    <header 
+      className="fixed z-10 w-full bg-background border-b border-b-input flex items-center justify-between py-4 px-5 lg:pr-8 lg:pl-6"
+      role="banner"
+      aria-label="Site Header"
+    >
+      <Title 
+        as="h2" 
+        className="text-primary text-xl"
+        aria-label="Bookshelf"
+      >
+        Bookshelf
+      </Title>
       <section className="lg:hidden">
         <MobileNavbar />
       </section>

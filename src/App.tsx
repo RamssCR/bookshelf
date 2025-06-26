@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Bookshelf } from './views/Bookshelf'
 import { BookDetails } from './views/BookDetails'
-import { BookReader } from '@views/BookReader'
+import { BookReader } from './views/BookReader'
 import { Discover } from './views/Discover'
 import { Login } from './views/Login'
 import { Profile } from './views/Profile'

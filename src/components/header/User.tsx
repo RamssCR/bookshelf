@@ -8,9 +8,10 @@ export const User = ({ username, className }: { username?: string, className?: s
     <AppLink 
       to="/profile" 
       className={classMerger(className)}
+      aria-label={`Go to ${username}'s profile`}
     >
       <div className="p-2.5 border-2 border-input rounded-full">
-        <UserIcon className="fill-primary" />
+        <UserIcon className="fill-primary" aria-hidden="true" />
       </div>
       <div className="flex flex-col items-start">
         <Title as="h6" className="text-base font-medium text-primary">{username}</Title>
