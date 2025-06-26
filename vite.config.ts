@@ -54,7 +54,7 @@ export default defineConfig(({ mode }) => {
           'coverage/**',
           'test/**',
           'html/**',
-          '*.config.js',
+          '*config.*',
           'src/vite-env.d.ts',
         ],
         all: true,

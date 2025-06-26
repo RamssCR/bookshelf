@@ -75,7 +75,7 @@ export const BookCard = ({
           <Button
             variant="none"
             size="none"
-            className="sr-only hover:cursor-pointer lg:hidden"
+            className="hover:cursor-pointer lg:hidden"
             aria-label={isAdded ? 'Remove from bookshelf' : 'Add to bookshelf'}
             onClick={handleClick}
           >
