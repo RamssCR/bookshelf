@@ -5,7 +5,6 @@ import {
 import type { CSSProperties } from 'react'
 
 const Toaster = ({ ...props }: ToasterProps) => {
-
   return (
     <Sonner
       className="toaster group"

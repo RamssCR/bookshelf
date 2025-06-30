@@ -11,7 +11,9 @@ export const BookDescription = ({ synopsis }: Partial<BookCardProps>) => {
         <p
           className="text-base font-medium text-primary"
           key={index}
-        >{paragraphs}</p>
+        >
+          {paragraphs}
+        </p>
       ))}
     </section>
   )

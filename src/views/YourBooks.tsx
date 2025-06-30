@@ -7,9 +7,10 @@ import { Layout } from "@layouts/Layout"
 import { Title } from "@components/ui/title"
 import { useId } from "react"
 import { useYourBooks } from "@hooks/useYourBooks"
+import { ShowResults } from "@components/show-results/ShowResults"
 
 const Header = () => (
-  <section className="w-full flex flex-col items-start">
+  <section className="w-full flex flex-col items-start border-b border-b-border pb-4">
     <Title className="text-2xl font-semibold text-primary">Your Books</Title>
     <p className="text-muted-foreground font-medium">Have a look at the books you're already reading, or perhaps, start a new one</p>
   </section>
@@ -30,6 +31,7 @@ export const YourBooks = () => {
     <Layout>
       <ContentContainer>
         <Header />
+        <ShowResults page={data?.page} total={data?.totalPages} />
         <BookGridView
           books={data?.books as BookCardProps[]}
           location="your-books"
