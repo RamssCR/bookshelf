@@ -25,7 +25,7 @@ export const Field = ({
 }: FieldProps) => (
   <section className="grid w-full gap-3">
     <Label htmlFor={id}>
-      {label} {required && <span aria-hidden="true" className="text-destructive">*</span>}
+      {label} {required && <span aria-hidden="true" className="-ml-1 text-destructive">*</span>}
     </Label>
     <Input 
       type={type} 

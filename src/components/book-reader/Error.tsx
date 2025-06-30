@@ -5,7 +5,7 @@ type BookReaderErrorProps = {
   chapter?: string
 }
 
-export const BookReaderError = ({ chapter = "" }: BookReaderErrorProps) => (
+export const BookReaderError = ({ chapter }: BookReaderErrorProps) => (
   <section
     className="w-full h-full flex flex-col items-center justify-center gap-2"
     role="alert"

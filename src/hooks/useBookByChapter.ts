@@ -10,7 +10,6 @@ export const useBookChapterByNumber = (
   const { data, isLoading, error } = useQuery<BookContent, AxiosError>({
     queryKey: ['chapter', slug, chapter],
     queryFn: async () => {
-      if (!slug || !chapter) throw new Error('Missing slug or chapter')
       const response = await getBookChapterByNumber(slug, chapter)
       return response.data.data
     },

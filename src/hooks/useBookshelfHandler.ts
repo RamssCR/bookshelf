@@ -1,7 +1,4 @@
-import { 
-  type AxiosResponse, 
-  AxiosError 
-} from 'axios'
+import type { AxiosResponse } from 'axios'
 import type {
   QueryObserverResult,
   RefetchOptions
@@ -42,6 +39,7 @@ export const useBookshelfHandler = ({
   return async () => {
     try {
       if (isAdded) {
+        console.log('Removing book from shelf:', slug)
         await removeFromShelfAsync()
         triggerToast({
           title: 'Book removed from shelf',
@@ -57,7 +55,7 @@ export const useBookshelfHandler = ({
         })
       }
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (error instanceof Error) {
         console.error('Error updating book shelf:', error.message)
       }
       triggerToast({
